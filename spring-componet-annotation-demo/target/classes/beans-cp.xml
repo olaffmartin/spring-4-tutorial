@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	<bean id="myorg" class="com.omn.springdemo.domain.Organization"
+		destroy-method="destroy" init-method="initialize">
+		<constructor-arg value="Amazon" type="String" name="companyName"></constructor-arg>
+		<constructor-arg value="1994" type="int"
+			name="yearOfIncorporation">
+		</constructor-arg>
+
+		<property name="postalCode" value="77494"></property>
+		<property name="employeeCount" value="70000"></property>
+		<property name="slogan" value="Word hard, have fun, make history">
+		</property>
+		<property name="businessService" ref="ecommerceService"></property>
+	</bean>
+	<bean id="cloudService" class="com.omn.springdemo.serviceimpl.CloudServiceImpl"
+		destroy-method="preDestroy" init-method="postConstruct">
+	</bean>
+	<bean id="ecommerceService" class="com.omn.springdemo.serviceimpl.EcommerceServiceImpl">
+	</bean>
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="com.omn.springdemo.domain"></context:component-scan>
+</beans>

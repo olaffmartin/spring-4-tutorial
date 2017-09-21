@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="myorg" class="com.omn.springdemo.domain.Organization">
+		<constructor-arg value="Amazon" type="String" name="companyName"></constructor-arg>
+		<constructor-arg value="1994" type="int"
+			name="yearOfIncorporation">
+		</constructor-arg>
+
+		<property name="postalCode" value="77494"></property>
+		<property name="employeeCount" value="70000"></property>
+		<property name="slogan" value="Word hard, have fun, make history">
+		</property>
+		<property name="businessService" ref="ecommerceService"></property>
+	</bean>
+	<bean id="cloudService" class="com.omn.springdemo.serviceimpl.CloudServiceImpl">
+	</bean>
+	<bean id="ecommerceService" class="com.omn.springdemo.serviceimpl.EcommerceServiceImpl">
+	</bean>
+</beans>
